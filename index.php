@@ -18,6 +18,8 @@
     );
 
 
+    $dbconn = new PDO('mysql:host=localhost; dbname=students', 'me', 'mdp'); 
+
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +36,7 @@
 
     <ul>
        <?php
-            foreach($students as $student) {
+            foreach($dbconn->query('SELECT * FROM students') as $student) {
                 echo "<li>".$student["firstname"]." ".$student["lastname"]." (".$student["email"].")</li>";
             }
         
